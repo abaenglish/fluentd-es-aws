@@ -12,14 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY:	build push
+.PHONY:    build push
 
-PREFIX = cheungpat
-IMAGE = fluentd-elasticsearch-aws
-TAG = 1.22
+PREFIX = gcr.io/google_containers
+IMAGE = fluentd-elasticsearch
+TAG = 1.24
 
 build:
-	docker build --pull -t $(PREFIX)/$(IMAGE):$(TAG) .
+    docker build --pull -t $(PREFIX)/$(IMAGE):$(TAG) .
 
 push:
-	docker push $(PREFIX)/$(IMAGE):$(TAG)
+    gcloud docker --server=gcr.io -- push $(PREFIX)/$(IMAGE):$(TAG)
