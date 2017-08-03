@@ -2,6 +2,7 @@ node {
     def fd
 
     stage('build') {
+        checkout scm
         fd = docker.build("abaenglish/fluentd-es-aws")
     }
 
